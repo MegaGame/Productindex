@@ -48,7 +48,7 @@ namespace Controller
         public void MakepNameList()
         {
             ProducttIndexAccess p = new ProducttIndexAccess();
-            String[] a = p.GetpNameString().Split(';');
+            String[] a = p.GetIndex(p.GetProductNames).Split(';');
             foreach (var item in a)
             {
                 pNameList.Add(item);
@@ -57,7 +57,7 @@ namespace Controller
         public void MakepTypeList()
         {
             ProducttIndexAccess p = new ProducttIndexAccess();
-            String[] a = p.GetpTypeString().Split(';');             
+            String[] a = p.GetIndex(p.GetProtuctNames).Split(';');             
             foreach (var item in a)
             {
                 pTypeList.Add(item);
@@ -66,7 +66,7 @@ namespace Controller
         public void MakepDocumationList()
         {
             ProducttIndexAccess p = new ProducttIndexAccess();
-            String[] a = p.GetpDocumationString().Split(';');
+            String[] a = p.GetIndex(p.GetpDocumationTypes).Split(';');
             foreach (var item in a)
             {
                 pDocumationList.Add(item);

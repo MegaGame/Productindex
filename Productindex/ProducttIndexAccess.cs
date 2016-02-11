@@ -10,38 +10,33 @@ namespace TechnicalServices.DatabaseHandler
 {
     class ProducttIndexAccess : ProductAccess
     {
-        public string GetpNameString()
+        public string GetProductNames = "GetProductNames";
+        public string GetProtuctNames = "GetProtuctNames";
+        public string GetpDocumationTypes = "GetpDocumationTypes";
+        public string GetIndex(string s)
         {
-            string s = null;
+            string data = null;
             SqlConnection conn = new SqlConnection(dataBaseAccess);
             SqlCommand cmd;
             SqlDataReader reader;
-            cmd = new SqlCommand("GetProtuctNames", conn);
+            cmd = new SqlCommand(s, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             reader = cmd.ExecuteReader();
             while (reader.HasRows && reader.Read())
             {
-                if (s == null)
+                if (data == null)
                 {
-                    s = reader.GetString(0);
+                    data = reader.GetString(0);
                 }
                 else
                 {
-                    s = ";" + s + reader.GetString(0);
-                }                
+                    data = ";" + data + reader.GetString(0);
+                }
             }
             reader.Close();
             conn.Close();
-            conn.Dispose();            
-            return s;           
-        }
-        public string GetpTypeString()
-        {            
-            return "Discount;Hverdag";
-        }
-        public string GetpDocumationString()
-        {            
-            return "Opskrift;Korrespondance";
+            conn.Dispose();
+            return data;
         }
     }
 }

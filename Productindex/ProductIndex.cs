@@ -15,7 +15,7 @@ namespace Controller
         public List<string> pDocumationList = new List<string>();
 
         public ProductIndex()
-        {
+        {            
             MakepNameList();
             MakepTypeList();
             MakepDocumationList();
@@ -24,14 +24,14 @@ namespace Controller
         {
             if (pNameList.Contains(pName) && pTypeList.Contains(pType) && pDocumationList.Contains(pDocumation))
             {
-                if (pDocumation == "Product Infomation")
+                if (pDocumation == "Produkt infomation")
                 {
                     ProductInfo pi = new ProductInfo(pName, pType);
 
                 }
-                else if (pDocumation == "Recipe")
+                else if (pDocumation == "Opskirft")
                 {
-                    Recipe r = new Recipe(pName, pType, pDocumation);
+                    Recipe r = new Recipe(pName, pType);
                 }
                 else if (pDocumation == "Correspondance")
                 {
@@ -65,6 +65,8 @@ namespace Controller
         }
         public void MakepDocumationList()
         {
+            pDocumationList.Add("Opskirft");
+            pDocumationList.Add("Produkt infomation");
             ProducttIndexAccess p = new ProducttIndexAccess();
             String[] a = p.GetIndex(p.GetpDocumationTypes).Split(';');
             foreach (var item in a)

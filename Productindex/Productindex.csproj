@@ -58,7 +58,7 @@
     <Compile Include="Correspondance.cs" />
     <Compile Include="ProductAccess.cs" />
     <Compile Include="ProducttIndexAccess.cs" />
-    <Compile Include="ProducttInfoAccess.cs" />
+    <Compile Include="ProductDocumationAccess.cs" />
     <Compile Include="QualityAssurance.cs" />
     <Compile Include="Recipe.cs" />
     <Compile Include="WindowData.xaml.cs">

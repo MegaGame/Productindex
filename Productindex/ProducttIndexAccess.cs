@@ -30,7 +30,7 @@ namespace TechnicalServices.DatabaseHandler
                 }
                 else
                 {
-                    data = ";" + data + reader.GetString(0);
+                    data = data + ";" + reader.GetString(0);
                 }
             }
             reader.Close();

@@ -9,10 +9,11 @@ namespace Model
 {
     class Recipe
     {
-        public Recipe(string pName, string pType, string pDocumation)
+        List<List<string>> IList = new List<List<string>>();
+        public Recipe(string pName, string pType)
         {
-            ProducttInfoAccess pa = new ProducttInfoAccess();
-            pa.GetRecipe(pName, pType, pDocumation);
+            ProductDocumationAccess p = new ProductDocumationAccess();
+            IList = p.GetIngredients(pName);
         }
         private void CalculateUse()
         {

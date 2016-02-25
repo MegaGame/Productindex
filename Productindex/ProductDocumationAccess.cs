@@ -51,12 +51,12 @@ namespace TechnicalServices.DatabaseHandler
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@pName", pName);
                 SqlDataReader reader = cmd.ExecuteReader();
-                int i = 0;
                 while (reader.HasRows && reader.Read())
                 {
                     List<string> subList = new List<string>();
                     subList.Add(reader["Ingredients"].ToString());
                     subList.Add(reader["Ratio"].ToString());
+                    list.Add(subList);
                 }
                 reader.Close();
             }
@@ -71,5 +71,33 @@ namespace TechnicalServices.DatabaseHandler
             }
             return list;
         }
+        public double GetAmoughtIngredients(string pType)
+        {
+            double d = 0;
+            SqlConnection conn = new SqlConnection(dataBaseAccess);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT PName.ProductTypes,AmoughtIngredients.ProductTypes FROM ProductTypes WHERE @pType = PName.ProductTypes", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@pType", pType);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.HasRows && reader.Read())
+                {
+                    double.TryParse(reader["AmoughtIngredients"].ToString(), out d);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+            return d;
+        }
+
     }
 }

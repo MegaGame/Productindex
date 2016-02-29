@@ -19,14 +19,15 @@ namespace View
     /// </summary>
     public partial class WindowData : Window
     {
-        public WindowData()
+        public WindowData(string s)
         {
             InitializeComponent();
-            ShowData();
+            ShowData(s);
         }
-        public void ShowData()
-        {            
-            label_Data.Content = "test, test " + Environment.NewLine + "test";
+        public void ShowData(string s)
+        {
+            s = s.Replace(";", System.Environment.NewLine);                      
+            label_Data.Content = s;
         }
     }
 }

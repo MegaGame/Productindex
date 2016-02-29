@@ -11,7 +11,7 @@ namespace TechnicalServices.DatabaseHandler
     class ProducttIndexAccess : ProductAccess
     {
         public string GetProductNames = "GetProductNames";
-        public string GetProtuctNames = "GetProtuctNames";
+        public string GetProductTypes = "GetProductTypes";
         public string GetpDocumationTypes = "GetpDocumationTypes";
         public string GetIndex(string s)
         {

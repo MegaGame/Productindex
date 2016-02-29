@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Model;
 using TechnicalServices.DatabaseHandler;
 
-namespace Controller
+namespace View
 {
     class ProductIndex
     {
@@ -27,11 +27,12 @@ namespace Controller
                 if (pDocumation == "Produkt infomation")
                 {
                     ProductInfo pi = new ProductInfo(pName, pType);
-
+                    return pi.ToString();
                 }
                 else if (pDocumation == "Opskirft")
                 {
                     Recipe r = new Recipe(pName, pType);
+                    return r.ToString();
                 }
                 else if (pDocumation == "Correspondance")
                 {
@@ -57,7 +58,7 @@ namespace Controller
         public void MakepTypeList()
         {
             ProducttIndexAccess p = new ProducttIndexAccess();
-            String[] a = p.GetIndex(p.GetProtuctNames).Split(';');             
+            String[] a = p.GetIndex(p.GetProductTypes).Split(';');             
             foreach (var item in a)
             {
                 pTypeList.Add(item);
